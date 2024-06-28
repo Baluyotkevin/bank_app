@@ -23,6 +23,7 @@ import CustomInput from './CustomInput';
 import { authFormSchema } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { signIn, signUp } from '@/lib/actions/user.actions';
  
 
 const AuthForm = ({ type } : { type: string}) => {
@@ -39,22 +40,22 @@ const AuthForm = ({ type } : { type: string}) => {
     },
 })
  
-const onSubmit = (data: z.infer<typeof formSchema>) => {
+const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true)
     try {
 
         if (type === 'sign-up') {
-            // const newUser = await signUp(data)
-            // setNewUser(newUser)
+            const newUser = await signUp(data)
+            setNewUser(newUser)
         }
 
         if (type === 'sign-in') {
-            // const response = await SignIn({
-            //     emaiL: data.email,
-            //     password: data.password
-            // })
+            const response = await signIn({
+                emaiL: data.email,
+                password: data.password
+            })
 
-            // if (response) router.push('/')
+            if (response) router.push('/')
         }
 
     } catch (err) {
