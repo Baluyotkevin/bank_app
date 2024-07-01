@@ -28,10 +28,9 @@ import { signIn, signUp } from '@/lib/actions/user.actions';
 
 const AuthForm = ({ type } : { type: string}) => {
     const router = useRouter()
-    const [user, setUser] = useState(null)
+    const [user, setNewUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const formSchema = authFormSchema(type)
-
     const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,14 +43,17 @@ const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true)
     try {
 
+        console.log("type", type)
+        console.log(data, "data")
         if (type === 'sign-up') {
             const newUser = await signUp(data)
+
             setNewUser(newUser)
         }
 
         if (type === 'sign-in') {
             const response = await signIn({
-                emaiL: data.email,
+                email: data.email,
                 password: data.password
             })
 
@@ -183,7 +185,6 @@ const onSubmit = async (data: z.infer<typeof formSchema>) => {
                                 ) : type === 'sign-in' ? ' Sign In' : 'Sign Up'} 
                             
                             </Button>
-                        
                         </div>
                     </form>
                 </Form>
