@@ -44,6 +44,9 @@ const config = {
           700: "#C11574",
           900: "#851651",
         },
+        teal: {
+          100: "#8BD8BC"
+        },
         blue: {
           25: "#F5FAFF",
           100: "#D1E9FF",
@@ -70,7 +73,7 @@ const config = {
         },
       },
       backgroundImage: {
-        "bank-gradient": "linear-gradient(90deg, #0179FE 0%, #4893FF 100%)",
+        "bank-gradient": "linear-gradient(90deg, #8BD8BC 0%, #79d4b3 100%)",
         "gradient-mesh": "url('/icons/gradient-mesh.svg')",
         "bank-green-gradient":
           "linear-gradient(90deg, #01797A 0%, #489399 100%)",
