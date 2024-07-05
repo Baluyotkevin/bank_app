@@ -10,12 +10,12 @@ export default function RootLayout({
         {children}
         <div className="auth-asset">
           <div className="">
-            {/* <Image 
-              src="/icons/auth-image.svg"
+            <Image 
+              src="/icons/auth-image.png"
               alt="Auth image"
-              width={500}
-              height={500}
-            /> */}
+              width={600}
+              height={600}
+            />
           </div>
         </div>
     </main>
